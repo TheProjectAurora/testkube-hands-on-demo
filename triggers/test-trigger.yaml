@@ -1,0 +1,24 @@
+apiVersion: tests.testkube.io/v1
+kind: TestTrigger
+metadata:
+  name: testtrigger-example
+  namespace: testkube
+spec:
+  resource: pod
+  resourceSelector:
+    labelSelector:
+      matchLabels:
+        app: foass-app
+  event: deployment_scale_update
+  conditionSpec:
+    timeout: 100
+    conditions:
+    - type: Progressing
+      status: "True"
+    - type: Available
+      status: "True"
+  action: run
+  execution: testsuite
+  testSelector:
+    name: foass-testsuite
+    namespace: testkube

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "curl",
+    "http://foass-service",
+    "-H",
+    "'Accept: application/json'"
+  ],
+  "expected_status": "200",
+  "expected_body": "{\"success\":\"true\"}"
+}
