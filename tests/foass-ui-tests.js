@@ -1,6 +1,6 @@
 describe('The Home Page', () => {
   it('successfully loads', () => {
-    cy.visit('http://172.17.0.7') 
+    cy.visit('http://foass-app.foass.svc.cluster.local') 
 
     expect(Cypress.env('testparam')).to.equal('testvalue')
 

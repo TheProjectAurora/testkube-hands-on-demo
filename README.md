@@ -41,7 +41,7 @@ kubectl testkube dashboard
 
 ```
 kubectl create -f deployment/namespace.yaml
-kubectl apply -f deployment/deployment.yaml
+kubectl apply -f deployment/foass-deployment.yaml
 ```
 
 Fetch SUT ip address and update it to tests
@@ -72,7 +72,7 @@ Explanation for tests:
 # Tests creation
 kubectl testkube create test --name foass-ui-test --file tests/foass-ui-tests.js --type cypress/project
 kubectl testkube create test --name foass-api-test --file ./tests/foass-health.postman_collection.json --type postman/collection
-kubectl testkube create test --name foass-curl-test --file tests/foass-curl-tests.json 
+kubectl testkube create test --name foass-curl-test --file tests/foass-curl-tests.json --type curl/test
 kubectl testkube create test --name foass-artillery-api-test --file ./tests/foass-artillery-api-test.yaml --type artillery/test
 ```
 

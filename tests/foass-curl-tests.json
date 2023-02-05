@@ -1,7 +1,7 @@
 {
   "command": [
     "curl",
-    "http://foass-service",
+    "http://foass-app.foass.svc.cluster.local:5000",
     "-H",
     "'Accept: application/json'"
   ],
