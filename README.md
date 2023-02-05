@@ -1,5 +1,5 @@
 # testkube-hand-on-demo
-This repository contains simple 5 steps example how you can use testkube to execute tests at kubernetes cluster. You can run this demo locally at your own laptop, this demo uses minikube cluster to host kubernetes installation. 
+This repository contains simple 6 steps example how you can use testkube to execute tests at kubernetes cluster. You can run this demo locally at your own laptop, this demo uses minikube cluster to host kubernetes installation. 
 
 # About TestKube 
 Testkube is native testing framework for kubernetes applications.
@@ -37,36 +37,25 @@ kubectl testkube dashboard
 ![Testkube dashboard](documentation/testkube-dashboard.png)
 
 # Step 3. Deploy SUT into cluster
-
-
+Run following commands to deploy SUT into minikube cluster
 ```
 kubectl create -f deployment/namespace.yaml
 kubectl apply -f deployment/foass-deployment.yaml
 ```
-
-Fetch SUT ip address and update it to tests
-```
-kubectl get pod -o wide -n foass
-```
-
-
 
 You should get output like this: 
 
 ![Foass deployed](documentation/foass-deployed.png)
 
 
-TBD: Update SUT IP address to tests!!
-
 # Step 4. Create tests
-This step we run multiple simple tests agains our foass SUT which is now currently deployed into minikube cluster.
+This step we run multiple simple tests agains our foass SUT which is now currently deployed into minikube cluster. All tests are configured to find SUT by it's kube dns name foass-app.<namespace>.srv.cluster.local
 
 Explanation for tests: 
 - foass-ui-test - is a simple UI test for testing FOASS UI to find out "foass" test from page.
 - foass-health.postman_collection - tests that service health endpoint replies (SUT endpoint/health -> see https://foass.1001010.com/health)
 - foass-curl-test - tests that service is up and running and curl gets HTTP 200 OK response
 - foass-artillery-api-test - is a simple load testing for stress out foass health endpoint 
-
 
 ```
 # Tests creation
@@ -80,11 +69,11 @@ Output...
 ![Tests created](documentation/tests-created.png)
 
 
-## Step 5. Create test suite
+# Step 5. Create test suite
 Test suite is useful to create collection of tests, so you can then afterward manage tests easier by executing suite to run suite it's tests.
 
 ```
-kubectl apply -f ./tests/foass-test-suite.yaml
+kubectl apply -f ./tests/foass-testsuite.yaml
 ```
 
 Verify suite creation from testkube dashboard or using testkube CLI
@@ -92,9 +81,9 @@ Verify suite creation from testkube dashboard or using testkube CLI
 ![Testsuite created](documentation/testsuite-created.png)
 
 
-# Step 5. Execute tests and view results
+# Step 6. Execute tests and view results
 ```
-kubectl testkube run testsuite foass-test-suite
+kubectl testkube run testsuite foass-testsuite
 ```
 
 ![Testrun started](documentation/testrun-started.png)
@@ -103,10 +92,28 @@ kubectl testkube run testsuite foass-test-suite
 
 If you got a similar view on the Dashboard, congratulations on the successful execution of the tests!! :)
 
+# Other topics to test
+
+## Test Triggers
+Test triggers can be used to trigger testcase or testsuite execution based on the Kubernetes cluster events. Here is simple steps to setup Cluster trigger:
+
+```
+kubectl apply -f triggers/test-trigger.yaml
+```
+
+Now you have created trigger into testkube and you can see trigger from testkube dashboad.
+![Foass deployed](documentation/trigger-created.png)
+
+This trigger will trigger every time when you scale foass deployment. So scaling deployment run following command:
+```
+kubectl scale --replicas=0 deployment/foass-deployment -n foass
+```
+
+And tests will trigger when deployment is scaled.
+
+
 # Other interesting topics relating to Testkube 
 [Test Scheduling](https://kubeshop.github.io/testkube/using-testkube/scheduling)
-
-[Test Triggers](https://kubeshop.github.io/testkube/using-testkube/triggers)
 
 [Artifacts Storage](https://kubeshop.github.io/testkube/using-testkube/artifacts-storage)
 
