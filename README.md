@@ -95,14 +95,14 @@ If you got a similar view on the Dashboard, congratulations on the successful ex
 # Other topics to test
 
 ## Test Triggers
-Test triggers can be used to trigger testcase or testsuite execution based on the Kubernetes cluster events. Here is simple steps to setup Cluster trigger:
+Test triggers can be used to trigger testcase or testsuite execution based on the Kubernetes cluster events. This helps lots of testing, we do not need to trigger testing from CICD all cases, tests can be triggered event cluster events hapens, case new deployment, deployment deletion, scaling etc. This feature is really useful example to run regression testing to applications. Here is simple steps to setup Cluster trigger:
 
 ```
 kubectl apply -f triggers/test-trigger.yaml
 ```
 
 Now you have created trigger into testkube and you can see trigger from testkube dashboad.
-![Foass deployed](documentation/trigger-created.png)
+![Trigger created](documentation/trigger-created.png)
 
 This trigger will trigger every time when you scale foass deployment. So scaling deployment run following command:
 ```
@@ -111,17 +111,16 @@ kubectl scale --replicas=0 deployment/foass-deployment -n foass
 
 And tests will trigger when deployment is scaled.
 
+![Trigger executed](documentation/trigger-executed.png)
+
 
 # Other interesting topics relating to Testkube 
-[Test Scheduling](https://kubeshop.github.io/testkube/using-testkube/scheduling)
-
-[Artifacts Storage](https://kubeshop.github.io/testkube/using-testkube/artifacts-storage)
-
-[Metrics](https://kubeshop.github.io/testkube/using-testkube/metrics)
-
-[CI integration](https://kubeshop.github.io/testkube/integrations/testkube-automation)
+- [Test Scheduling](https://kubeshop.github.io/testkube/using-testkube/scheduling)
+- [Artifacts Storage](https://kubeshop.github.io/testkube/using-testkube/artifacts-storage)
+- [Metrics](https://kubeshop.github.io/testkube/using-testkube/metrics)
+- [CI integration](https://kubeshop.github.io/testkube/integrations/testkube-automation)
 
 # Links
-[TestKube the Kubernetes native testing framework TestKube](https://kubeshop.github.io/testkube/)
-[Minikube local kubernetes cluster of macOS, Linux and Windows](https://minikube.sigs.k8s.io/docs/)
-[Artillery.io the most advanced loadtesting platform in the world](https://www.artillery.io/)
+- [TestKube the Kubernetes native testing framework TestKube](https://kubeshop.github.io/testkube/)
+- [Minikube local kubernetes cluster of macOS, Linux and Windows](https://minikube.sigs.k8s.io/docs/)
+- [Artillery.io the most advanced loadtesting platform in the world](https://www.artillery.io/)
