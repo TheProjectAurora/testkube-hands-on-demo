@@ -32,4 +32,3 @@ spec:
         image: samaarah1docker/foass:latest
         ports:
         - containerPort: 80
-
