@@ -1,7 +1,7 @@
 apiVersion: tests.testkube.io/v2
 kind: TestSuite
 metadata:
-  name: foass-test-suite
+  name: foass-testsuite
   namespace: testkube
 spec:
   steps:
