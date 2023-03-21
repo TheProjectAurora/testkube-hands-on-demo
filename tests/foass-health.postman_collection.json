@@ -25,13 +25,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://10.244.0.120:5000/health",
+					"raw": "http://foass-service.foass.svc.cluster.local:5000/health",
 					"protocol": "http",
 					"host": [
-						"10",
-						"244",
-						"0",
-						"120"
+						"foass-service",
+						"foass",
+						"svc",
+						"cluster",
+						"local"
 					],
 					"port": "5000",
 					"path": [
