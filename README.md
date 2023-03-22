@@ -6,7 +6,7 @@ Testkube is native testing framework for kubernetes applications.
 
 # System under test
 FOASS (Fuck Off As A Service) provides a modern, RESTful, scalable solution to the common problem of telling people to fuck off. 
-https://foass.1001010.com/
+https://foass.1001010.com/off/TestAutomation/:Developer_When_Tests_Not_Work
 
 # Step 1. Install Minikube cluster
 For Linux users:
