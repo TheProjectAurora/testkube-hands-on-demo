@@ -6,7 +6,7 @@ Testkube is native testing framework for kubernetes applications.
 
 # System under test
 FOASS (Fuck Off As A Service) provides a modern, RESTful, scalable solution to the common problem of telling people to fuck off. 
-https://foass.1001010.com/
+https://foass.1001010.com/off/TestAutomation/:Developer_When_Tests_Not_Work
 
 # Step 1. Install Minikube cluster
 For Linux users:
@@ -38,6 +38,7 @@ kubectl testkube dashboard
 
 # Step 3. Deploy SUT into cluster
 Run following commands to deploy SUT into minikube cluster
+
 ```
 kubectl create -f deployment/namespace.yaml
 kubectl apply -f deployment/foass-deployment.yaml
@@ -59,7 +60,7 @@ Explanation for tests:
 
 ```
 # Tests creation
-kubectl testkube create test --name foass-ui-test --file tests/foass-ui-tests.js --type cypress/project
+kubectl testkube create test --git-uri https://github.com/TheProjectAurora/testkube-hands-on-demo --git-branch master --git-path tests --name foass-ui-test --type cypress/project
 kubectl testkube create test --name foass-api-test --file ./tests/foass-health.postman_collection.json --type postman/collection
 kubectl testkube create test --name foass-curl-test --file tests/foass-curl-tests.json --type curl/test
 kubectl testkube create test --name foass-artillery-api-test --file ./tests/foass-artillery-api-test.yaml --type artillery/test

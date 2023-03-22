@@ -25,10 +25,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://foass-app.foass.svc.cluster.local:5000/health",
+					"raw": "http://foass-service.foass.svc.cluster.local:5000/health",
 					"protocol": "http",
 					"host": [
-						"foass-app",
+						"foass-service",
 						"foass",
 						"svc",
 						"cluster",

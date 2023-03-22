@@ -1,5 +1,5 @@
 config:
-  target: "http://foass-app.foass.svc.cluster.local"
+  target: "http://foass-service.foass.svc.cluster.local:5000"
   phases:
     - duration: 6
       arrivalRate: 5

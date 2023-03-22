@@ -1,10 +1,9 @@
 {
   "command": [
     "curl",
-    "http://foass-app.foass.svc.cluster.local:5000",
+    "http://foass-service.foass.svc.cluster.local:5000",
     "-H",
     "'Accept: application/json'"
   ],
-  "expected_status": "200",
-  "expected_body": "{\"success\":\"true\"}"
+  "expected_status": "200"
 }

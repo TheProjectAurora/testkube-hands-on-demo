@@ -8,18 +8,12 @@ spec:
   - execute:
       namespace: testkube
       name: foass-api-test
-  - delay:
-      duration: 2000
   - execute:
       namespace: testkube
       name: foass-ui-test
-  - delay:
-      duration: 2000
   - execute:
       namespace: testkube
       name: foass-curl-test
-  - delay:
-      duration: 2000
   - execute:
       namespace: testkube
       name: foass-artillery-api-test
