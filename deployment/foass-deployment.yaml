@@ -18,9 +18,9 @@ spec:
       containers:
       - name: foass
         image: samaarah1docker/foass:latest
-        ports:
-        - name: http
-          containerPort: 5000
+        #ports:
+        #- name: http
+        #  containerPort: 5000
 ---
 kind: Service
 apiVersion: v1
@@ -31,9 +31,14 @@ spec:
   selector:
     app: foass-pod
   ports:
-  - protocol: TCP
+  - name: api
+    protocol: TCP
     port: 5000
-    targetPort: http
+    targetPort: 5000
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 5000
 ---
 apiVersion: v1
 kind: Pod 
