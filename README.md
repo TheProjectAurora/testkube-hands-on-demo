@@ -60,8 +60,7 @@ Explanation for tests:
 
 ```
 # Tests creation
-#kubectl testkube create test --name foass-ui-test --file tests/foass-ui-tests.js --type cypress/project
-kubectl testkube create test --git-uri https://github.com/TheProjectAurora/testkube-hands-on-demo --git-branch main --git-path tests --name foass-ui-test --type cypress/project
+kubectl testkube create test --git-uri https://github.com/TheProjectAurora/testkube-hands-on-demo --git-branch master --git-path tests --name foass-ui-test --type cypress/project
 kubectl testkube create test --name foass-api-test --file ./tests/foass-health.postman_collection.json --type postman/collection
 kubectl testkube create test --name foass-curl-test --file tests/foass-curl-tests.json --type curl/test
 kubectl testkube create test --name foass-artillery-api-test --file ./tests/foass-artillery-api-test.yaml --type artillery/test
