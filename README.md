@@ -64,6 +64,7 @@ kubectl testkube create test --git-uri https://github.com/TheProjectAurora/testk
 kubectl testkube create test --name foass-api-test --file ./tests/foass-health.postman_collection.json --type postman/collection
 kubectl testkube create test --name foass-curl-test --file tests/foass-curl-tests.json --type curl/test
 kubectl testkube create test --name foass-artillery-api-test --file ./tests/foass-artillery-api-test.yaml --type artillery/test
+kubectl testkube create test --name foass-k6-load-test --type k6/script --file ./tests/foass-k6-test.js
 ```
 
 Output...
